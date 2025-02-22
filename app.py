@@ -6,17 +6,12 @@ app = Flask(__name__)
 # 環境変数からAPIキーを取得
 API_KEY = os.getenv("API_KEY")
 
-# ルートパス（"/"）にアクセスしたときの挙動
+# ルートページでAPIキーを表示
 @app.route("/")
 def hello():
-    return "<h1>Hello World!!</h1>"
+    return f"<h1>Hello, GitHub! 🚀</h1><p>API_KEY: {API_KEY}</p>"
 
-# エラーハンドリング（404 Not Found用）
-@app.errorhandler(404)
-def page_not_found(e):
-    return "<h1>404 - ページが見つかりません</h1>", 404
-
-# デバッグ用ログ出力
+# デバッグ用: ターミナルにAPIキーを表示
 print(f"✅ API_KEY: {API_KEY}")
 
 if __name__ == "__main__":
